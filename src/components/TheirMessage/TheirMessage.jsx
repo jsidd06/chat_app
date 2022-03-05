@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
 
-function TheirMessage({message,lastMessage}) {
-
-    const isFirstMessageByUser = !lastMessage || lastMessage.sender.userName !== message.sender.userName;
-
+const  TheirMessage =({ message, lastMessage }) => {
+  const isFirstMessageByUser =
+    !lastMessage || lastMessage.sender.username !== message.sender.username;
 
   return (
     <div className="message-row">
@@ -11,13 +10,13 @@ function TheirMessage({message,lastMessage}) {
         <div
           className="message-avatar"
           style={{
-            backgroundImage: message.sender && `url($(message.sender.avatar))`,
+            backgroundImage: message.sender && `url(${message.sender.avatar})`
           }}
         />
       )}
       {message.attachments && message.attachments.length > 0 ? (
         <img
-          src={message.attachment[0].file}
+          src={message.attachments[0].file}
           alt={message.attachment}
           className="message-image"
           style={{ marginLeft: isFirstMessageByUser ? "4px" : "48px" }}
@@ -28,7 +27,6 @@ function TheirMessage({message,lastMessage}) {
           style={{
             float: "left",
             marginLeft: isFirstMessageByUser ? "4px" : "48px",
-            color: "white",
             backgroundColor: "#CABCDC",
           }}
         >
@@ -39,4 +37,4 @@ function TheirMessage({message,lastMessage}) {
   );
 }
 
-export default TheirMessage
+export default TheirMessage;

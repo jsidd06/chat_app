@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState} from 'react'
-import {SendOutlined, PictureOutline} from '@ant-design/icons'
+import { SendOutlined, PictureOutlined } from "@ant-design/icons";
 import {sendMessage,isTyping} from "react-chat-engine"
 function MessageForm(props) {
     const [value,setValue] = useState('')
@@ -14,7 +14,7 @@ function MessageForm(props) {
         e.preventDefault()
         const text = value.trim()  
         if(text.length > 0) {
-            sendMessage(chatId, creds, {text})
+            sendMessage( creds,chatId, {text})
         } 
         setValue('')
     }
@@ -27,29 +27,33 @@ function MessageForm(props) {
 
   return (
     <form onSubmit={handleSubmit} className="message-form">
-        <input type="text" className="message-input" 
-        placeholder='send a message...'  
+      <input
+        type="text"
+        className="message-input"
+        placeholder="send a message..."
         value={value}
         onChange={handleChange}
         onSubmit={handleSubmit}
-          />
+      />
 
-          <label htmlFor="upload-button">
-              <span className="image-button">
-                    <PictureOutline className="picture-icon" />
-                  </span>
-          </label>
-            <input id="upload-button" type="file" 
-            multiple={false}
-            style={{display: "none"}}
-            onChange={handleUpload.bind(this)}
-             />
+      <label htmlFor="upload-button">
+        <span className="image-button">
+          <PictureOutlined className="picture-icon" />
+        </span>
+      </label>
+      <input
+        id="upload-button"
+        type="file"
+        multiple={false}
+        style={{ display: "none" }}
+        onChange={handleUpload.bind(this)}
+      />
 
-             <button type="submit" className="send-button">
-                 <SendOutlined className="send-icon" />
-                 </button>
+      <button type="submit" className="send-button">
+        <SendOutlined className="send-icon" />
+      </button>
     </form>
-  )
+  );
 }
 
 export default MessageForm
